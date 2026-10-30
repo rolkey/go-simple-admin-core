@@ -2,6 +2,7 @@ Name: core.api
 Host: 0.0.0.0
 Port: 9100
 Timeout: 6000
+Mode: dev
 
 Auth:
   AccessSecret: jS6VKDtsJf3z1n2VKDtsJf3z1n2
@@ -9,7 +10,7 @@ Auth:
 
 Log:
   ServiceName: coreApiLogger
-  Mode: file
+  Mode: console
   Path: /home/data/logs/core/api
   Level: info
   Compress: false
@@ -23,12 +24,12 @@ Captcha:
   Driver: digit
 
 DatabaseConf:
-  Type: mysql
-  Host: 127.0.0.1
-  Port: 3306
+  Type: postgres
+  Host: postgresql-server
+  Port: 5432
   DBName: simple_admin
-  Username: # set your username
-  Password: # set your password
+  Username: simple_admin
+  Password: simple-admin.
   MaxOpenConn: 100
   SSLMode: disable
   CacheTime: 5
@@ -75,12 +76,14 @@ CROSConf:
   Address: '*'    # if it is *, allow all ip and address. e.g. http://example.com
 
 RedisConf:
-  Host: 127.0.0.1:6379
+  Host: redis-server:6379
   Db: 0
 
 CoreRpc:
-  Target: k8s://default/core-rpc-svc:9101
+  Endpoints:
+    - core-rpc:9101
   Enabled: true
+  Timeout: 10000
 
 JobRpc:
   Target: k8s://default/job-rpc-svc:9105

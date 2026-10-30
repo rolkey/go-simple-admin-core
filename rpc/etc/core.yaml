@@ -1,20 +1,21 @@
 Name: core.rpc
 ListenOn: 0.0.0.0:9101
+Mode: dev
 
 DatabaseConf:
-  Type: mysql
-  Host: 127.0.0.1
-  Port: 3306
+  Type: postgres
+  Host: postgresql-server
+  Port: 5434
   DBName: simple_admin
-  Username: # set your username
-  Password: # set your password
+  Username: simple_admin
+  Password: simple-admin.
   MaxOpenConn: 100
   SSLMode: disable # disable or require
   CacheTime: 5
 
 Log:
   ServiceName: coreRpcLogger
-  Mode: file
+  Mode: console
   Path: /home/data/logs/core/rpc
   Encoding: json
   Level: info
@@ -23,7 +24,7 @@ Log:
   StackCoolDownMillis: 100
 
 RedisConf:
-  Host: 127.0.0.1:6379
+  Host: redis-server:6379
 
 Prometheus:
   Host: 0.0.0.0
