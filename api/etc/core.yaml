@@ -26,7 +26,7 @@ Captcha:
 DatabaseConf:
   Type: postgres
   Host: postgresql-server
-  Port: 5432
+  Port: 5434
   DBName: simple_admin
   Username: simple_admin
   Password: simple-admin.
